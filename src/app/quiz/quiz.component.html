@@ -1,0 +1,294 @@
+<div class="gameboard" *ngIf="!this.hideBoard" >
+  <div class="column">
+    <div class="category">{{ questionSet1[0].category }}</div>
+    <div class="questions"   (click)="showQuestionSeries1(0, $event)">1</div>
+    <div class="questions" (click)="showQuestionSeries1(1, $event)">2</div>
+    <div class="questions" (click)="showQuestionSeries1(2, $event)">3</div>
+    <div class="questions" (click)="showQuestionSeries1(3, $event)">4</div>
+    <div class="questions" (click)="showQuestionSeries1(4, $event)">5</div>
+  </div>
+  <div class="column">
+    <div class="category">{{ questionSet2[0].category }}</div>
+    <div class="questions" (click)="showQuestionSeries2(0, $event)">1</div>
+    <div class="questions" (click)="showQuestionSeries2(1, $event)">2</div>
+    <div class="questions" (click)="showQuestionSeries2(2, $event)">3</div>
+    <div class="questions" (click)="showQuestionSeries2(3, $event)">4</div>
+    <div class="questions" (click)="showQuestionSeries2(4, $event)">5</div>
+  </div>
+  <div class="column">
+    <div class="category">{{ questionSet3[0].category }}</div>
+    <div class="questions" (click)="showQuestionSeries3(0, $event)">1</div>
+    <div class="questions" (click)="showQuestionSeries3(1, $event)">2</div>
+    <div class="questions" (click)="showQuestionSeries3(2, $event)">3</div>
+    <div class="questions" (click)="showQuestionSeries3(3, $event)">4</div>
+    <div class="questions" (click)="showQuestionSeries3(4, $event)">5</div>
+  </div>
+  <div class="column">
+    <div class="category">{{ questionSet4[0].category }}</div>
+    <div class="questions" (click)="showQuestionSeries4(0, $event)">1</div>
+    <div class="questions" (click)="showQuestionSeries4(1, $event)">2</div>
+    <div class="questions" (click)="showQuestionSeries4(2, $event)">3</div>
+    <div class="questions" (click)="showQuestionSeries4(3, $event)">4</div>
+    <div class="questions" (click)="showQuestionSeries4(4, $event)">5</div>
+  </div>
+
+</div>
+
+<div class="questionCard" *ngIf="this.showCat1Quest">
+  <div *ngFor="let question of questionSet1; index as i" >
+    <form
+      #quizForm="ngForm"
+      *ngIf="i == this.questionNumber"
+      (ngSubmit)="submitQuiz()"
+    >
+      <div class="question">
+        <div class="catDiff">
+          <p>{{ question.category }}</p>
+          <p class="difficulty">{{ question.difficulty }}</p>
+        </div>
+        <p>{{ htmlDecode(question.question) }}</p>
+      </div>
+      <div class="choices">
+        <div>
+          <input
+            type="radio"
+            name="choice1"
+            id="choice1"
+            value="{{ htmlDecode(question.answers[0]) }}"
+            [(ngModel)]="question.choice"
+          />
+          <label for="choice1"> {{ htmlDecode(question.answers[0]) }} </label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="choice{{ i + 1 }}"
+            id="choice2"
+            value="{{ htmlDecode(question.answers[1]) }}"
+            [(ngModel)]="question.choice"
+          />
+          <label for="choice2"> {{ htmlDecode(question.answers[1]) }} </label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="choice{{ i + 1 }}"
+            id="choice3"
+            value="{{ htmlDecode(question.answers[2]) }}"
+            [(ngModel)]="question.choice"
+          />
+          <label for="choice3"> {{ htmlDecode(question.answers[2]) }} </label>
+        </div>
+        <div>
+          <label for="choice4">
+            <input
+            type="radio"
+            name="choice{{ i + 1 }}"
+            id="choice4"
+            value="{{ htmlDecode(question.answers[3]) }}"
+            [(ngModel)]="question.choice"
+          />
+            <i> {{ htmlDecode(question.answers[3]) }}</i> 
+          </label>
+        </div>
+
+        <button type="button" (click)="logAnswer(question.choice, htmlDecode(question.correct_answer))">
+          Final Answer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="questionCard" *ngIf="this.showCat2Quest">
+  <div *ngFor="let question of questionSet2; index as i">
+    <form
+      #quizForm="ngForm"
+      *ngIf="i == this.questionNumber"
+      (ngSubmit)="submitQuiz()"
+    >
+    <div class="question">
+      <div class="catDiff">
+        <p>{{ question.category }}</p>
+        <p class="difficulty">{{ question.difficulty }}</p>
+      </div>
+      <p>{{ htmlDecode(question.question) }}</p>
+    </div>
+    <div class="choices">
+      <div>
+        <input
+          type="radio"
+          name="choice1"
+          id="choice1"
+          value="{{ htmlDecode(question.answers[0]) }}"
+          [(ngModel)]="question.choice"
+        />
+        <label for="choice1"> {{ htmlDecode(question.answers[0]) }} </label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          name="choice{{ i + 1 }}"
+          id="choice2"
+          value="{{ htmlDecode(question.answers[1]) }}"
+          [(ngModel)]="question.choice"
+        />
+        <label for="choice2"> {{ htmlDecode(question.answers[1]) }} </label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          name="choice{{ i + 1 }}"
+          id="choice3"
+          value="{{ htmlDecode(question.answers[2]) }}"
+          [(ngModel)]="question.choice"
+        />
+        <label for="choice3"> {{ htmlDecode(question.answers[2]) }} </label>
+      </div>
+      <div>
+        <input
+        type="radio"
+        name="choice{{ i + 1 }}"
+        id="choice4"
+        value="{{ htmlDecode(question.answers[3]) }}"
+        [(ngModel)]="question.choice"
+      />
+      <label for="choice4"> {{ htmlDecode(question.answers[3]) }} </label>
+      </div>
+
+      <button type="button" (click)="logAnswer(question.choice, htmlDecode(question.correct_answer))">
+        Final Answer
+      </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="questionCard" *ngIf="this.showCat3Quest">
+  <div *ngFor="let question of questionSet3; index as i">
+    <form
+      #quizForm="ngForm"
+      *ngIf="i == this.questionNumber"
+      (ngSubmit)="submitQuiz()"
+    >
+    <div class="question">
+      <div class="catDiff">
+        <p>{{ question.category }}</p>
+        <p class="difficulty">{{ question.difficulty }}</p>
+      </div>
+      <p>{{ htmlDecode(question.question) }}</p>
+    </div>
+    <div class="choices">
+      <div>
+        <input
+          type="radio"
+          name="choice1"
+          id="choice1"
+          value="{{ htmlDecode(question.answers[0]) }}"
+          [(ngModel)]="question.choice"
+        />
+        <label for="choice1"> {{ htmlDecode(question.answers[0]) }} </label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          name="choice{{ i + 1 }}"
+          id="choice2"
+          value="{{ htmlDecode(question.answers[1]) }}"
+          [(ngModel)]="question.choice"
+        />
+        <label for="choice2"> {{ htmlDecode(question.answers[1]) }} </label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          name="choice{{ i + 1 }}"
+          id="choice3"
+          value="{{ htmlDecode(question.answers[2]) }}"
+          [(ngModel)]="question.choice"
+        />
+        <label for="choice3"> {{ htmlDecode(question.answers[2]) }} </label>
+      </div>
+      <div>
+        <input
+        type="radio"
+        name="choice{{ i + 1 }}"
+        id="choice4"
+        value="{{ htmlDecode(question.answers[3]) }}"
+        [(ngModel)]="question.choice"
+      />
+      <label for="choice4"> {{ htmlDecode(question.answers[3]) }} </label>
+      </div>
+
+      <button type="button" (click)="logAnswer(question.choice, htmlDecode(question.correct_answer))">
+        Final Answer
+      </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="questionCard" *ngIf="this.showCat4Quest">
+  <div *ngFor="let question of questionSet4; index as i">
+    <form
+      #quizForm="ngForm"
+      *ngIf="i == this.questionNumber"
+      (ngSubmit)="submitQuiz()"
+    >
+    <div class="question">
+      <div class="catDiff">
+        <p>{{ question.category }}</p>
+        <p class="difficulty">{{ question.difficulty }}</p>
+      </div>
+      <p>{{ htmlDecode(question.question) }}</p>
+    </div>
+    <div class="choices">
+      <div>
+        <input
+          type="radio"
+          name="choice1"
+          id="choice1"
+          value="{{ htmlDecode(question.answers[0]) }}"
+          [(ngModel)]="question.choice"
+        />
+        <label for="choice1"> {{ htmlDecode(question.answers[0]) }} </label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          name="choice{{ i + 1 }}"
+          id="choice2"
+          value="{{ htmlDecode(question.answers[1]) }}"
+          [(ngModel)]="question.choice"
+        />
+        <label for="choice2"> {{ htmlDecode(question.answers[1]) }} </label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          name="choice{{ i + 1 }}"
+          id="choice3"
+          value="{{ htmlDecode(question.answers[2]) }}"
+          [(ngModel)]="question.choice"
+        />
+        <label for="choice3"> {{ htmlDecode(question.answers[2]) }} </label>
+      </div>
+      <div>
+        <input
+        type="radio"
+        name="choice{{ i + 1 }}"
+        id="choice4"
+        value="{{ htmlDecode(question.answers[3]) }}"
+        [(ngModel)]="question.choice"
+      />
+      <label for="choice4"> {{ htmlDecode(question.answers[3]) }} </label>
+      </div>
+
+      <button type="button" (click)="logAnswer(question.choice, htmlDecode(question.correct_answer))">
+        Final Answer
+      </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="finalScore" *ngIf="this.showScore">
+  <div>Your Final Score</div>
+  <div> {{ this.finalScore }} </div>
+</div>

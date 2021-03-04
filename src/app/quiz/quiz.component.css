@@ -1,0 +1,124 @@
+.gameboard {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-gap: 0.25%;
+    background-color: black;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-flow: column;
+}
+.category, .questions {
+    height: 16.6%;
+    border: 1px solid black;
+    border-radius: 2px;
+    text-align: center;
+    /* background-color: rgb(6, 12, 233); */
+    background: rgb(10,13,130);
+    background: linear-gradient(52deg, rgba(10,13,130,1) 8%, rgba(6,12,233,1) 96%, rgba(185,187,250,1) 100%);
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.category {
+    font-size: 0.7em;
+    color: white;
+}
+.questions {
+    border-radius: 5px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: rgb(240, 240, 240);
+    text-shadow: 1px 2px black;
+}
+.questions:hover {
+    background-color: rgb(49, 55, 250);
+}
+
+.disabled {
+    background-color: rgb(26, 30, 151);
+    pointer-events: none;
+    color: transparent;
+    text-shadow: none;
+}
+
+.questionCard {
+
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(6, 12, 233);
+    background: linear-gradient(52deg, rgba(10,13,130,1) 8%, rgba(6,12,233,1) 96%, rgba(185,187,250,1) 100%);
+    width: 100%;
+    height: 100vh;
+}
+.question {
+    margin-top: 5px;
+    margin-bottom: 50px;
+    padding: 15px;
+}
+.catDiff {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.choices {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+}
+input, label {
+    margin-bottom: 20px;
+}
+.difficulty::first-letter {
+    text-transform: capitalize;
+}
+button {
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    align-self: center;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    cursor: pointer;
+    text-decoration: none;
+}
+button:hover {
+    background-color: rgb(226, 235, 245);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.418);
+}
+
+
+@media only screen and (min-width: 768px ) {
+    .gameboard {
+        padding: 20px;
+    }
+    .category {
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+    .questions {
+        font-size: 2.5em;
+        font-weight: 800;
+    }
+    .questionCard {
+        font-size: 1.25em;
+        justify-content: space-around;
+        align-items: center;
+    }
+    form {
+        padding: 5% 15% 5% 15%;
+    }
+    button {
+        width: 100px;
+    }
+}
