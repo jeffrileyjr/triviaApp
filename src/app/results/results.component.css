@@ -1,0 +1,57 @@
+.podium {
+    background-image: url(../../assets/images/podium.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+}
+  .username {
+    font-family: 'Cedarville Cursive', cursive;
+    background-color: rgb(10, 10, 233);
+    font-size: 2.5em;
+    margin: 0;
+    position: relative;
+    top: 85px;
+    left: 76px;
+    padding-top: 15px;
+    padding-left: 5px;
+    line-height: 85%;
+    font-weight: 500;
+    text-align: center;
+    height: 120px;
+    width: 150px;
+  }
+  .score {
+    position: relative;
+    top: 40px;
+    left: 205px;
+    font-size: 1.5em;
+  }
+  .usernameContainer {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media only screen and (min-width: 768px ) {
+    .podium {
+      width: 600px;
+      height: 800px;
+    }
+    .username {
+      top: 170px;
+      left: 152px;
+      height: 240px;
+      width: 300px;
+      padding-top: 50px;
+      font-size: 3em;
+    }
+    .score {
+      top: 85px;
+      left: 410px;
+      font-size: 3em;
+    }
+}

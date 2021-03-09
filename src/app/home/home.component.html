@@ -1,24 +1,22 @@
 <h1>Not Jeopardy!</h1>
 <div class="usernameContainer" *ngIf="!capturedUsername">
+  
   <form #usernameForm="ngForm" (keydown.enter)="getUsername(usernameForm)">
     <div class="nameInputContainer">
-      <label for="">Your Name: </label>
+      <p>Enter your name and hit enter start</p>
       <input
         class="usernameInput"
         type="text"
         [(ngModel)]="username"
         name="username"
+        placeholder="Your name..."
         required
       />
     </div>
     <div class="podium">
+      <div class="score">0</div>
       <p class="username">{{ username }}</p>
     </div>
 
   </form>
-</div>
-<div>
-  <a routerLink="/quiz" routerLinkActive="active" *ngIf="showStart"
-    >Welcome, {{ username }}! Click to get started! </a
-  >
 </div>

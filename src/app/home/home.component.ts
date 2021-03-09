@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TrivaAPIService } from '../Services/triva-api.service';
 import { UserInfoService } from '../Services/user-info.service';
 
@@ -21,12 +22,12 @@ export class HomeComponent implements OnInit {
     console.log(this.username)
     console.log(this.capturedUsername)
     this.showStart = true;
-    return this.capturedUsername;
+    this.router.navigateByUrl('/quiz');
   }
 
 
 
-  constructor(private userService: UserInfoService) { }
+  constructor(private userService: UserInfoService, private router: Router) { }
 
   ngOnInit(): void {
 

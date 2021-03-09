@@ -1,3 +1,9 @@
+<div class="welcome" *ngIf='!this.hideWelcome'> 
+  Welcome {{ this.username }} 
+  <p>You'll get 5 random questions in 4 random categories.</p>
+  <p>Questions are multiple choice and of random difficulty. (for now)</p>
+  <button (click)="getStarted()">Get Started</button>
+</div>
 <div class="gameboard" *ngIf="!this.hideBoard" >
   <div class="column">
     <div class="category">{{ questionSet1[0].category }}</div>
@@ -287,8 +293,4 @@
       </div>
     </form>
   </div>
-</div>
-<div class="finalScore" *ngIf="this.showScore">
-  <div>Your Final Score</div>
-  <div> {{ this.finalScore }} </div>
 </div>

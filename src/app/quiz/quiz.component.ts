@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Question } from '../models/question';
 import { ScoreService } from '../Services/score.service';
 import { TrivaAPIService } from '../Services/triva-api.service';
+import { UserInfoService } from '../Services/user-info.service';
 
 @Component({
   selector: 'app-quiz',
@@ -18,14 +20,15 @@ export class QuizComponent implements OnInit {
   questionNumber;
   finalScore;
   questionsAnswered: number = 0;
-  hideBoard: boolean = false;
+  hideBoard: boolean = true;
   showCat1Quest: boolean = false;
   showCat2Quest: boolean = false;
   showCat3Quest: boolean = false;
   showCat4Quest: boolean = false;
   showCat5Quest: boolean = false;
-  showScore: boolean = false;
+  hideWelcome: boolean = false;
   target = null;
+  username = this.userService.username;
 
   fetchQuestions = async () => {
     await this.triviaService.getQuestions1();
@@ -41,6 +44,10 @@ export class QuizComponent implements OnInit {
     console.log(this.questionSet1);
   };
 
+  getStarted() {
+    this.hideWelcome = !this.hideWelcome;
+    this.hideBoard = !this.hideBoard
+  }
   showQuestionSeries1(i: number, event) {
     this.showCat1Quest = true;
     this.questionNumber = i;
@@ -88,7 +95,7 @@ export class QuizComponent implements OnInit {
       this.showCat3Quest = false;
       this.showCat4Quest = false;
       this.showCat5Quest = false;
-      this.showScore = true;
+      this.router.navigateByUrl('/results');
     }
   }
 
@@ -100,7 +107,9 @@ export class QuizComponent implements OnInit {
 
   constructor(
     private triviaService: TrivaAPIService,
-    private scoreService: ScoreService
+    private scoreService: ScoreService,
+    private userService: UserInfoService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
